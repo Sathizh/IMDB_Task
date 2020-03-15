@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+	<!-- style="background-image:  url('{{poster}}');background-repeat: no-repeat;background-size: cover;
+  background-attachment: fixed;" -->
+	<div class="container">
+		<form method="post">
+			{% csrf_token %}
+			<div style="float: right;" class="pt-4">
+				<input type="search" name="urlquery">
+	    		<input type="submit"  value="Search" class="btn btn-warning">
+			</div>
+		<div class="row">
+			{% for data in obj %}
+			<div class="card p-4 mt-4" style="top: 0px">
+				<div class="d-flex justify-content-center">
+					<img src="{{poster}}" width="220px" height="220px">
+				</div>
+				<p><b><h5>Title:</h5>{{data.title}}</b><br>
+				<p><b><h5>Director:</h5>{{data.Director}}</b><br>
+				<p><b><h5>Writer:</h5>{{data.writer}}</b><br>
+				<p><b><h5>Casts:</h5>{{data.cast}}</b><br>
+				<p><b><h5>Plot:</h5>{{data.plot}}</b><br>
+				<p><b><h5>Rating:</h5>{{data.rating}}</b><br>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</form>
+</body>
+</html>
